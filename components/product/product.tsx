@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { SHOPIFY_OPTIONS } from '../../constants';
 
@@ -10,10 +10,8 @@ export const Product = (props: ProductProps) => {
 
 	const productRef = useRef<HTMLDivElement>(null);
 
-	const [hasRendered, setHasRendered] = useState(false);
-
 	const renderProduct = () => {
-		if (!ui || hasRendered) return;
+		if (!ui) return;
 
 		ui.createComponent('product', {
 			id: productId,
@@ -21,8 +19,6 @@ export const Product = (props: ProductProps) => {
 			options: SHOPIFY_OPTIONS,
 			moneyFormat: '%7B%7Bamount_no_decimals%7D%7D%20kr',
 		});
-
-		setHasRendered(true);
 	};
 
 	useEffect(renderProduct, [ui]);

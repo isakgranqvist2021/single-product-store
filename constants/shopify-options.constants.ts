@@ -2,6 +2,8 @@ import { PAGE_SETTINGS } from './page-settings.constants';
 
 const BORDER_RADIUS = '28px';
 const GOOGLE_FONTS = ['Droid Sans'];
+const COLOR = '#fff';
+const PRICE_COLOR = '#63eb42';
 
 const BUTTON_STYLES = {
 	'font-family': 'Droid Sans, sans-serif',
@@ -15,21 +17,35 @@ const BUTTON_STYLES = {
 };
 
 const PRODUCT = {
+	width: '100%',
+	layout: 'horizontal',
 	googleFonts: GOOGLE_FONTS,
 	text: { button: 'Add to cart' },
+	contents: {
+		img: false,
+		description: true,
+		imgWithCarousel: true,
+	},
 	styles: {
-		product: {
-			'@media (min-width: 601px)': {
-				'margin-left': '20px',
-				'margin-bottom': '50px',
-				'max-width': 'calc(25% - 20px)',
-			},
-		},
+		color: COLOR,
+		description: { color: COLOR },
+		title: { color: COLOR, 'font-size': '22px' },
+		price: { color: PRICE_COLOR, 'font-size': '28px' },
+		unitPrice: { color: COLOR, 'font-size': '15.3px' },
+		compareAt: { color: PRICE_COLOR, 'font-size': '15.3px' },
 		button: {
 			...BUTTON_STYLES,
 			'padding-left': '34px',
+			'border-radius': '28px',
 			'padding-right': '34px',
-			'border-radius': BORDER_RADIUS,
+		},
+		product: {
+			'@media (min-width: 601px)': {
+				'max-width': '100%',
+				'margin-left': '0',
+				'margin-bottom': '50px',
+			},
+			'text-align': 'left',
 		},
 	},
 };

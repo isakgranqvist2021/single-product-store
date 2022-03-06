@@ -3,13 +3,14 @@ export const PAGE_SETTINGS = {
 
 	favicon_url: '/public/favicon.ico',
 
-	page_background_url: 'background-image.jpg',
+	page_background_url:
+		'https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
 
 	buttons: {
-		background_color: '#51a83b',
+		background_color: '#d98d30',
 		text_color: '#fff',
 		hover: {
-			background_color: '#5bb545',
+			background_color: '#eb9f42',
 		},
 	},
 };

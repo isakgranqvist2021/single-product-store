@@ -13,6 +13,7 @@ const App = (props: AppProps) => {
 			<Script
 				async
 				strategy='beforeInteractive'
+				onLoad={() => console.log('Loaded')}
 				src='https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js'
 			/>
 

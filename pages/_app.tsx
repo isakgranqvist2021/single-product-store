@@ -21,8 +21,9 @@ const App = (props: AppProps) => {
 
 		const renderProduct = async () => {
 			const client = window.ShopifyBuy.buildClient({
-				domain: 'isakgranqvist-com.myshopify.com',
-				storefrontAccessToken: 'a1f5c107e6797e805b7af6a1a5e10820',
+				domain: process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN,
+				storefrontAccessToken:
+					process.env.NEXT_PUBLIC_SHOPIFY_STORE_ACCESS_TOKEN,
 			});
 
 			const ui = await window.ShopifyBuy.UI.onReady(client);

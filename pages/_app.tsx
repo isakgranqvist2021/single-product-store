@@ -1,45 +1,12 @@
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
 import Script from 'next/script';
-import { useEffect } from 'react';
+import { PAGE_SETTINGS } from '../constants';
 
-import { SHOPIFY_OPTIONS } from '../constants';
-
-declare global {
-	interface Window {
-		ShopifyBuy: any;
-	}
-}
+import { GlobalStyle, Styled } from '../styled';
 
 const App = (props: AppProps) => {
 	const { Component, pageProps } = props;
-
-	const onScriptLoad = () => {
-		if (!window || !window.ShopifyBuy) {
-			window.setTimeout(() => onScriptLoad, 3000);
-			return;
-		}
-
-		const renderProduct = async () => {
-			const client = window.ShopifyBuy.buildClient({
-				domain: process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN,
-				storefrontAccessToken:
-					process.env.NEXT_PUBLIC_SHOPIFY_STORE_ACCESS_TOKEN,
-			});
-
-			const ui = await window.ShopifyBuy.UI.onReady(client);
-
-			ui.createComponent('product', {
-				id: '7593553985788',
-				options: SHOPIFY_OPTIONS,
-				moneyFormat: '%7B%7Bamount_no_decimals%7D%7D%20kr',
-				node: document.getElementById('product-component-1646581305335'),
-			});
-		};
-
-		renderProduct();
-	};
-
-	useEffect(onScriptLoad, []);
 
 	return (
 		<div>
@@ -47,7 +14,15 @@ const App = (props: AppProps) => {
 				strategy='beforeInteractive'
 				src='https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js'
 				async></Script>
-			<Component {...pageProps} />
+			<GlobalStyle />
+
+			<Head>
+				<link rel='shortcut icon' href={PAGE_SETTINGS.favicon_url} />
+			</Head>
+
+			<Styled.Main>
+				<Component {...pageProps} />
+			</Styled.Main>
 		</div>
 	);
 };

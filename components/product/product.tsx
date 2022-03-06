@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { SHOPIFY_OPTIONS } from '../../constants';
 
@@ -8,22 +8,21 @@ import { ProductProps } from './product.types';
 export const Product = (props: ProductProps) => {
 	const { ui, productId } = props;
 
-	const productRef = useRef<HTMLDivElement>(null);
+	const productRef = useCallback(
+		(node: HTMLDivElement | null) => {
+			if (!ui || !node) return;
 
-	const renderProduct = () => {
-		if (!ui) return;
+			node.innerHTML = '';
 
-		ui.createComponent('product', {
-			id: productId,
-			node: productRef.current,
-			options: SHOPIFY_OPTIONS,
-			moneyFormat: '%7B%7Bamount_no_decimals%7D%7D%20kr',
-		});
-	};
-
-	useEffect(renderProduct, [ui]);
-
-	if (!ui) return <p>Loading...</p>;
+			ui.createComponent('product', {
+				node,
+				id: productId,
+				options: SHOPIFY_OPTIONS,
+				moneyFormat: '%7B%7Bamount_no_decimals%7D%7D%20kr',
+			});
+		},
+		[ui]
+	);
 
 	return <Styled.Product ref={productRef} />;
 };

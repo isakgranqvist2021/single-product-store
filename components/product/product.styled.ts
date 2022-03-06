@@ -6,6 +6,7 @@ const Product = styled('div')`
 	width: 950px;
 	background-color: rgba(0, 0, 0, 0.31);
 	border-radius: 10px;
+	background-color: #fff;
 
 	@media (max-width: 1120px) {
 		width: 90%;

@@ -2,8 +2,8 @@ import { PAGE_SETTINGS } from './page-settings.constants';
 
 const BORDER_RADIUS = '28px';
 const GOOGLE_FONTS = ['Droid Sans'];
-const COLOR = '#fff';
-const PRICE_COLOR = '#63eb42';
+const COLOR = '#333';
+const PRICE_COLOR = '#333';
 
 const BUTTON_STYLES = {
 	'font-family': 'Droid Sans, sans-serif',

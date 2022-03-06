@@ -3,14 +3,13 @@ export const PAGE_SETTINGS = {
 
 	favicon_url: '/public/favicon.ico',
 
-	page_background_url:
-		'https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+	page_background_url: 'pexels-sukh-winder-5611633.jpg',
 
 	buttons: {
-		background_color: '#d98d30',
+		background_color: '#e66f37',
 		text_color: '#fff',
 		hover: {
-			background_color: '#eb9f42',
+			background_color: '#f07941',
 		},
 	},
 };
